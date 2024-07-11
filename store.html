@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Green leaf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="store.css" />
+</head>
+
+<body>
+
+  <div class="row m-0">
+    <div class="w-100 bg-primary p-2 text-white">
+      <i class="bi bi-telephone"></i> 9998887771 , 8454588785
+    </div>
+    <nav class="navbar bg-white shadow">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <a class="navbar-brand"><img src="images/defLogo.png" class="logo" alt="" /></a>
+          <select class="form-select border-bottom border-0" aria-label="Default select example">
+            <option selected>Banglore</option>
+            <option value="1">Mumbai</option>
+            <option value="2">Delhi</option>
+            <option value="3">Kolkata</option>
+          </select>
+        </div>
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu p-0">
+            <li><a href="#all" class="d-flex border-bottom categoery ">
+                <div class="p-3">All</div>
+              </a></li>
+            <li> <a href="#starter" class="d-flex border-bottom categoery">
+                <div class="p-3">starter</div>
+              </a></li>
+            <li><a href="#veg-main-course" class="d-flex categoery">
+                <div class="p-3">veg main course</div>
+              </a></li>
+          </ul>
+        </div>
+        <div class="mobile-sidebar">
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"><i class="bi bi-funnel"></i></button>
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body p-0">
+              <form class="d-flex border-bottom p-3 bg-light">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Search</button>
+              </form>
+              <div class="border-bottom p-3 mt-3 d-flex align-items-center">
+                <p class="mb-0">30 Mins</p>
+                <h6 class="mb-0 ms-2">Delivery Time</h6>
+              </div>
+              <div class="border-bottom p-3 mt-3 d-flex align-items-center">
+                <p class="mb-0">Rs 160.00</p>
+                <h6 class="mb-0 ms-2">Minimum Order</h6>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="d-flex align-items-center search-bar">
+          <div class="border-start ps-3 pe-3">
+            <p class="mb-1">30 Mins</p>
+            <h6>Delivery Time</h6>
+          </div>
+          <div class="border-start ps-3 pe-3">
+            <p class="mb-1">Rs 160.00</p>
+            <h6>Minimum Order</h6>
+          </div>
+          <div class="border-start border-end ps-3 pe-3">
+            <div id="myOverlay" class="overlay">
+              <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+              <div class="overlay-content">
+                <form action="/action_page.php">
+                  <input type="text" placeholder="Search.." name="search" />
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div>
+            </div>
+            <button class="openBtn" onclick="openSearch()">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="col col-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+
+      <div class="categoery-container rounded bg-white p-0 shadow">
+        <ul class="text-decoration-none list-unstyled">
+          <li><a href="#all" class="d-flex border-bottom categoery active p-3">All</a>
+
+
+          </li>
+          <li><a href="#starter" class="d-flex border-bottom categoery p-3">starter</a>
+
+          </li>
+
+          <li><a href="#veg-main-course" class="d-flex categoery p-3">veg main course</a>
+
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+
+    <div class="col col-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+
+
+
+
+      <button class="btn btn-primary cart-btn" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+        <i id="cart" class="bi bi-bag fs-3"></i>
+        <span class="cart-quantity">0</span>
+      </button>
+
+      <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header bg-primary text-white">
+          <p class="offcanvas-title " id="offcanvasWithBothOptionsLabel">Your Order Summary</p>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+          <div class="cart-modal-overlay">
+            <div class="cart-modal">
+              <i id="close-btn" class="fas fa-times"></i>
+              <div class="product-rows">
+
+              </div>
+              <div class="total">
+                <div class="input-group">
+                  <textarea class="form-control rounded-0"
+                    placeholder="Enter any additional information about your order"
+                    aria-label="With textarea"></textarea>
+                  <button type="button" class=" secondary w-100 rounded-0 p-3">Add more items</button>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <h6 class="mb-0 ms-2">Total:</h6>
+                    <h6 class="total-price mb-0 ms-1">Rs 0</h6>
+                  </div>
+                  <button class="purchase-btn btn btn-primary rounded-0 p-3">Checkout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <section id="all">
+        <div class="ms-3 mt-3 mt-md-4">
+          <h5 class="mb-1">All</h5>
+          <p class="all-line"></p>
+        </div>
+        <div class="container-fluid d-flex justify-content-center mb-3">
+          <div class="row items-container">
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Rabadi Jalebi</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                A great combination of 7 to 8 pieces of jalebi and 80 to 90 gms Rabadi</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#rabriJalebi"
+                  aria-controls="rabriJalebi" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 115.24</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="rabriJalebi">
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Rabadi Jalebi</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="100g" name="weight" value="100g">
+                        <label for="100g">100g <span class="quantity-price text-success ms-4">Rs. 115.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="200g" name="weight" value="200g">
+                        <label for="200g">200g <span class="quantity-price text-success ms-4">Rs. 225.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="300g" name="weight" value="300g">
+                        <label for="300g">300g <span class="quantity-price text-success ms-4">Rs. 335.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="400g" name="weight" value="400g">
+                        <label for="400g">400g <span class="quantity-price text-success ms-4">Rs. 445.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="500g" name="weight" value="500g">
+                        <label for="500g">500g <span class="quantity-price text-success ms-4">Rs. 545.24</span></label><br>
+                      </div>
+                    </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-2 card p-3 border-0 shadow">
+                <div class="d-flex">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Kashmiri Jamun</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                A single piece Jamun dipped in 80 to 90 Gms Rabadi</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#kashmiriJamun"
+                aria-controls="kashmiriJamun" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs 50.12</h6>
+
+                
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="kashmiriJamun"
+                >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Kashmiri Jamun</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="100g" name="weight" value="100g">
+                        <label for="100g">100g <span class="quantity-price text-success ms-4">Rs. 50.12</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="200g" name="weight" value="200g">
+                        <label for="200g">200g <span class="quantity-price text-success ms-4">Rs. 100.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="300g" name="weight" value="300g">
+                        <label for="300g">300g <span class="quantity-price text-success ms-4">Rs. 150.24</span></label><br>
+                      </div>
+                    </form>
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#kashmiriJamun"
+                      aria-controls="kashmiriJamun" class="add-to-cart mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Hakka Noodles</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Hakka Noodles is a popular indo - chinese dish of stirred fried noodles with veggies</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#hakkanoodles"
+                  aria-controls="hakkanoodles" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 115.24</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="hakkanoodles"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Hakka Noodles</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 115.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 225.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Aloo Chaat</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Hakka Noodles is a popular indo - chinese dish of stirred fried noodles with veggies</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#aloochaat"
+                  aria-controls="aloochaat" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 99.24</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="aloochaat"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Aloo Chaat</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 99.24.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 150.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Veg Lababdar</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Yellow finger type Veg Kofta prepared in Yellow Gravy all times hit dish.</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#veglababdar"
+                  aria-controls="veglababdar" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 250.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="veglababdar"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Veg Lababdar</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 250.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 350.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Paneer Butter Masala</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Paneer Butter Masala is a rich creamy tomato and paneer based mild sweet red gravy dish</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#paneerbuttermasala"
+                  aria-controls="paneerbuttermasala" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 300.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="paneerbuttermasala"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Paneer Butter Masala</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 300.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 525.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Jeera Ricee</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Rice stir fried in pure ghee with cumin seeds and spices dressed with fresh coriander leaves.</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#jeerarice"
+                  aria-controls="jeerarice" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 80.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="jeerarice"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Jeera Rice</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 80.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 150.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Palak Paneer</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Nutritious, delicious and protein rich Palak Paneer is made with Paneer.</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#palakpaneer"
+                  aria-controls="palakpaneer" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 150.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="palakpaneer"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Palak Paneer</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 150.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 225.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <section id="starter">
+        <div class="ms-3 mt-3 mt-md-0">
+          <h5 class="mb-1">Starter</h5>
+          <p class="starter-line"></p>
+        </div>
+        <div class="container-fluid d-flex justify-content-center mb-3">
+
+          <div class="row items-container">
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Rabadi Jalebi</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                A great combination of 7 to 8 pieces of jalebi and 80 to 90 gms Rabadi</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#rabriJalebi"
+                  aria-controls="rabriJalebi" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 115.24</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="rabriJalebi">
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Rabadi Jalebi</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="100g" name="weight" value="100g">
+                        <label for="100g">100g <span class="quantity-price text-success ms-4">Rs. 115.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="200g" name="weight" value="200g">
+                        <label for="200g">200g <span class="quantity-price text-success ms-4">Rs. 225.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="300g" name="weight" value="300g">
+                        <label for="300g">300g <span class="quantity-price text-success ms-4">Rs. 335.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="400g" name="weight" value="400g">
+                        <label for="400g">400g <span class="quantity-price text-success ms-4">Rs. 445.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="500g" name="weight" value="500g">
+                        <label for="500g">500g <span class="quantity-price text-success ms-4">Rs. 545.24</span></label><br>
+                      </div>
+                    </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-2 card p-3 border-0 shadow">
+                <div class="d-flex">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Kashmiri Jamun</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                A single piece Jamun dipped in 80 to 90 Gms Rabadi</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#kashmiriJamun"
+                aria-controls="kashmiriJamun" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs 50.12</h6>
+
+                
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="kashmiriJamun"
+                >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Kashmiri Jamun</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="100g" name="weight" value="100g">
+                        <label for="100g">100g <span class="quantity-price text-success ms-4">Rs. 50.12</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="200g" name="weight" value="200g">
+                        <label for="200g">200g <span class="quantity-price text-success ms-4">Rs. 100.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="300g" name="weight" value="300g">
+                        <label for="300g">300g <span class="quantity-price text-success ms-4">Rs. 150.24</span></label><br>
+                      </div>
+                    </form>
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#kashmiriJamun"
+                      aria-controls="kashmiriJamun" class="add-to-cart mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Hakka Noodles</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Hakka Noodles is a popular indo - chinese dish of stirred fried noodles with veggies</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#hakkanoodles"
+                  aria-controls="hakkanoodles" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 115.24</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="hakkanoodles"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Hakka Noodles</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 115.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 225.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Aloo Chaat</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Hakka Noodles is a popular indo - chinese dish of stirred fried noodles with veggies</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#aloochaat"
+                  aria-controls="aloochaat" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 99.24</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="aloochaat"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Aloo Chaat</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 99.24.24</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 150.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <section id="veg-main-course">
+        <div class="ms-3 mt-3 mt-md-0">
+          <h5 class="mb-1">Veg main course</h5>
+          <p class="veg-main-course-line"></p>
+        </div>
+        <div class="container-fluid d-flex justify-content-center mb-3">
+          <div class="row items-container">
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Veg Lababdar</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Yellow finger type Veg Kofta prepared in Yellow Gravy all times hit dish.</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#veglababdar"
+                  aria-controls="veglababdar" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 250.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="veglababdar"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Veg Lababdar</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 250.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 350.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Paneer Butter Masala</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Paneer Butter Masala is a rich creamy tomato and paneer based mild sweet red gravy dish</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#paneerbuttermasala"
+                  aria-controls="paneerbuttermasala" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 300.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="paneerbuttermasala"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Paneer Butter Masala</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 300.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 525.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Jeera Ricee</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Rice stir fried in pure ghee with cumin seeds and spices dressed with fresh coriander leaves.</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#jeerarice"
+                  aria-controls="jeerarice" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 80.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="jeerarice"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Jeera Rice</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 80.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 150.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 mt-2 ">
+              <div class="card-1 card p-3 border-0 shadow">
+                <div class="d-flex  ">
+                  <img src="images/veg-icon.png" alt="" style="height: 20px; width: 20px" />
+                  <h6 class="product-title ms-2">Palak Paneer</h6>
+                </div>
+                <a href="#" class="text-muted" data-abc="true"></a>
+                Nutritious, delicious and protein rich Palak Paneer is made with Paneer.</a>
+                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#palakpaneer"
+                  aria-controls="palakpaneer" class="add-to-cart-btn btn btn-primary">Add to cart</button>
+                <h6 class="product-price mt-3">Rs. 150.25</h6>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="palakpaneer"
+                  >
+                  <div class="offcanvas-header">
+                    <h5 class="offcanvas-title product-modal-title">Palak Paneer</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body small">
+
+                    <form class="d-flex gap-5">
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input checked type="radio" id="Half" name="weight" value="Half">
+                        <label for="Half">Half<span class="quantity-price text-success ms-4">Rs. 150.25</span></label><br>
+                      </div>
+                      <div class=" border-bottom mb-2 pb-2">
+                        <input type="radio" id="Full" name="weight" value="Full">
+                        <label for="Full">Full<span class="quantity-price text-success ms-4">Rs. 225.24</span></label><br>
+                      </div>
+                     </form>
+
+
+                    <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
+                      aria-controls="offcanvasBottom" class="add-to-cart  mt-4 w-100 btn btn-primary">Continue</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

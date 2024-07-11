@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+}
+.form-select:focus {
+  box-shadow: none;
+  border: 1px solid #0d6efd;
+}
+.form-select {
+  border: 1px solid #0d6efd;
+}
+
+.openBtn {
+  background: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.overlay {
+  height: 40%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type="text"] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type="text"]:hover {
+  background: #f1f1f1;
+}
+
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #0d6efd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #0d6efd;
+}
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+.mobile-sidebar {
+  display: none;
+}
+.all-line {
+  border-bottom: 2px solid #0d6efd;
+  width: 40px;
+}
+.starter-line {
+  border-bottom: 2px solid #0d6efd;
+  width: 80px;
+}
+.veg-main-course-line {
+  border-bottom: 2px solid#0D6EFD;
+  width: 190px;
+}
+.success {
+  color: #0d6efd;
+  background-color: #0d6efd;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.categoery-container {
+  position: sticky;
+  top: 140px;
+}
+.dropup {
+  position: fixed;
+  bottom: 50px;
+  left: 40%;
+  display: none;
+}
+
+.dropup .dropdown-toggle::after {
+  display: none;
+}
+.dropup .dropdown-menu[data-bs-popper] {
+  left: -55px;
+  width: 200px;
+  margin-bottom: 10px;
+}
+.categoery {
+  background-color: white;
+}
+.active,
+.categoery:hover {
+  border-left: 4px solid #0d6efd;
+  /* border-right: 4px solid #0d6efd; */
+}
+#cart-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.add-to-cart-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+/* .add-to-cart {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+} */
+.cart {
+  position: fixed;
+  top: 0;
+  right: -200%;
+  width: 360px;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #dce1ea;
+  transition: 0.5s ease-in-out;
+  z-index: 5;
+}
+.cart.active-cart {
+  right: 0;
+}
+
+.cart-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+  background-color: #0d6efd;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 50%;
+}
+
+.cart-quantity {
+  color: #ffffff;
+  background-color: rgb(157, 0, 0);
+  position: absolute;
+  padding: 3px 10px;
+  border-radius: 50%;
+}
+.product-rows {
+  height: 66.7vh;
+  overflow-y: scroll;
+}
+.product-rows::-webkit-scrollbar {
+  display: none;
+}
+.remove-btn {
+  border: none;
+  padding: 10px;
+}
+.product-quantity {
+  width: 50px;
+}
+.product-quantity:focus {
+  outline: none;
+}
+.secondary {
+  background-color: #f0f0f0;
+  border: none;
+  color: black;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+.btn-close:focus {
+  box-shadow: none;
+}
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgb(111, 111, 111);
+}
+.btn:active {
+  border: none;
+}
+.cart-price {
+  font-size: 13px;
+}
+@media screen and (min-width: 300px) and (max-width: 768px) {
+  .categoery-container {
+    display: none;
+  }
+  .search-bar {
+    display: none !important;
+  }
+  .dropup {
+    display: block;
+  }
+  .mobile-sidebar {
+    display: block;
+  }
+  .offcanvas {
+    width: 300px !important;
+  }
+}
+@media screen and (min-width: 300px) and (max-width: 1200px) {
+  .product-rows {
+    height: 62vh;
+    overflow-y: scroll;
+  }
+}
